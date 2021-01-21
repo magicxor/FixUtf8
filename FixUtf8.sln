@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FixUtf8", "FixUtf8\FixUtf8.csproj", "{79BEC3B9-8CD4-45F9-AA11-4D4750362B2A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FixUtf8", "FixUtf8\FixUtf8.csproj", "{79BEC3B9-8CD4-45F9-AA11-4D4750362B2A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrepareCSV", "PrepareCSV\PrepareCSV.csproj", "{1060714F-5DF8-4E2D-8D30-B8A766EB1A62}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{79BEC3B9-8CD4-45F9-AA11-4D4750362B2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79BEC3B9-8CD4-45F9-AA11-4D4750362B2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{79BEC3B9-8CD4-45F9-AA11-4D4750362B2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1060714F-5DF8-4E2D-8D30-B8A766EB1A62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1060714F-5DF8-4E2D-8D30-B8A766EB1A62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1060714F-5DF8-4E2D-8D30-B8A766EB1A62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1060714F-5DF8-4E2D-8D30-B8A766EB1A62}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
