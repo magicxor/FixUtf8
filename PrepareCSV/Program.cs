@@ -2,7 +2,10 @@
 using System.IO;
 using System.Text;
 
-const char delimiter = ':';
+const char delimiter1 = ':';
+const char delimiter2 = ';';
+const char delimiter3 = '|';
+
 const char newDelimiter = '\t';
 const int maxLength = 255;
 string line = string.Empty;
@@ -13,17 +16,28 @@ try
 {
     while ((line = srcFile.ReadLine()) != null)
     {
-        var indexOfDelimiter = -1;
+        var indexOfDelimiter1 = -1;
+        var indexOfDelimiter2 = -1;
+        var indexOfDelimiter3 = -1;
 
         {
             var sb = new StringBuilder(line.Length);
             var i = 0;
             foreach (var c in line)
             {
-                if (indexOfDelimiter < 0 && c == delimiter)
+                if (indexOfDelimiter1 < 0 && c == delimiter1)
                 {
-                    indexOfDelimiter = i;
+                    indexOfDelimiter1 = i;
                 }
+                if (indexOfDelimiter2 < 0 && c == delimiter2)
+                {
+                    indexOfDelimiter2 = i;
+                }
+                if (indexOfDelimiter3 < 0 && c == delimiter3)
+                {
+                    indexOfDelimiter3 = i;
+                }
+
                 if (c != '\x0000' &&
                     c != '\x0001' &&
                     c != '\x0002' &&
@@ -105,13 +119,28 @@ try
             line = sb.ToString();
         }
 
-        if (indexOfDelimiter > 0
+        if (((indexOfDelimiter1 > 0 && ((line.Length - 1) - indexOfDelimiter1 > 0)) || (indexOfDelimiter2 > 0 && ((line.Length - 1) - indexOfDelimiter2 > 0)) || (indexOfDelimiter3 > 0 && ((line.Length - 1) - indexOfDelimiter3 > 0)))
             && line != null
-            && line.Length > 0
-            && (line.Length - 1) - indexOfDelimiter > 0)
+            && line.Length > 0)
         {
-            var firstPart = line.Substring(0, indexOfDelimiter);
-            var secondPart = line.Substring(indexOfDelimiter + 1);
+            string firstPart = null;
+            string secondPart = null;
+
+            if ((indexOfDelimiter1 > 0) && ((line.Length - 1) - indexOfDelimiter1 > 0)) 
+            {
+                firstPart = line.Substring(0, indexOfDelimiter1);
+                secondPart = line.Substring(indexOfDelimiter1 + 1);
+            }
+            else if ((indexOfDelimiter2 > 0) && ((line.Length - 1) - indexOfDelimiter2 > 0))
+            {
+                firstPart = line.Substring(0, indexOfDelimiter2);
+                secondPart = line.Substring(indexOfDelimiter2 + 1);
+            }
+            else if ((indexOfDelimiter3 > 0) && ((line.Length - 1) - indexOfDelimiter3 > 0))
+            {
+                firstPart = line.Substring(0, indexOfDelimiter3);
+                secondPart = line.Substring(indexOfDelimiter3 + 1);
+            }
 
             if (!string.IsNullOrEmpty(firstPart) && !string.IsNullOrEmpty(secondPart))
             {
